@@ -91,7 +91,7 @@ npm run dev
 
 - **Descrição:** Realiza o download da fatura passando o mês/ano e o Nº do cliente.
   <br/><br/>
-  ![download da fatura de energia elétrica](docs/assets/download.gif)
+  ![download da fatura de energia elétrica](src/assets/download.gif)
   <br/>
   <br/>
   <br/>

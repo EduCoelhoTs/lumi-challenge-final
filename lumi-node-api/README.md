@@ -83,15 +83,6 @@ npm start
   <br/>
   <br/>
 
-### Download da fatura de energia elética
-
-- **Descrição:** Realiza o download da fatura passando o mês/ano e o Nº de instalação.
-  <br/><br/>
-  ![download da fatura de energia elétrica](docs/assets/download.gif)
-  <br/>
-  <br/>
-  <br/>
-  <br/>
 
 ### Calculo de todas faturas registradas de um cliente
 
