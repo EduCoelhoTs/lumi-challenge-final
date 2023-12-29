@@ -6,6 +6,13 @@ Esta é uma interface para o gerenciamento de dados de faturas de energia elétr
 
 Essa aplicação foi desenvolvido em **[React](https://react.dev/)**, utilizando o framework css **[Tailwind](https://tailwindcss.com/)** para acelerar o processo de desenvolvimento.
 
+## Figma
+> [Dashboard](https://www.figma.com/file/nOcLTSeuOmrD49q2Mzjxlc/Lumi-Challenge?type=design&node-id=2%3A2&mode=design&t=xLnlBQ3fCqfKALWb-1)
+![Alt text](./src/assets/image.png)
+<br/>
+
+> [Valores](https://www.figma.com/file/nOcLTSeuOmrD49q2Mzjxlc/Lumi-Challenge?type=design&node-id=3%3A2&mode=design&t=xLnlBQ3fCqfKALWb-1)
+![Alt text](./src/assets/image-1.png)
 <br/>
 
 ## Ambiente de Desenvolvimento
