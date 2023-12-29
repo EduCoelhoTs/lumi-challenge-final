@@ -1,0 +1,61 @@
+version: "3.1"
+
+services:
+  front:
+    container_name: lumi-front
+    image: node:20-alpine3.18
+    working_dir: /usr/src/lumi-front
+    restart: always
+    command: sh -c "apk --no-cache add curl && npm install && npm install -g serve && npm run build && serve -s ./dist || tail -f /dev/null"
+    volumes:
+      - ./front-end:/usr/src/lumi-front
+      - /usr/src/lumi-front/node_modules
+    ports:
+      - 3000:3000
+    stdin_open: true
+    tty: true
+    depends_on:
+      - api
+
+  api:
+    container_name: lumi-node
+    image: node:20-alpine3.18
+    working_dir: /usr/src/lumi-node-api
+    restart: always
+    command: sh -c "apk --no-cache add curl && npm install -g npm@10.2.5 && npm install && npm run migration:run && npm run start:dev || tail -f /dev/null"
+    volumes:
+      - ./lumi-node-api:/usr/src/lumi-node-api
+      - /usr/src/lumi-node-api/node_modules
+    ports:
+      - 3001:3001
+    stdin_open: true
+    tty: true
+    depends_on:
+      - db
+      - pdf-service
+
+  db:
+    image: postgres:15
+    container_name: postgres-container
+    restart: always
+    tty: true
+    ports:
+      - "5432:5432"
+    volumes:
+      - .docker/dbdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=lumi-db-dev
+
+  pdf-service:
+    container_name: lumi-pdf-service
+    image: python:3.10-alpine
+    working_dir: /usr/src/lumi-pdf-service
+    restart: always
+    command: sh -c "python -m venv venv && source venv/bin/activate && pip install -r requirements.txt && python app.py || tail -f /dev/null"
+    volumes:
+      - ./pdf-service:/usr/src/lumi-pdf-service
+    ports:
+      - "0.0.0.0:5000:5000"
+    stdin_open: true
+    tty: true
